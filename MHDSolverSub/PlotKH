@@ -1,0 +1,93 @@
+########################################################################
+#                                                                      #
+#                             GNUPLOT                                  #
+#                                                                      #
+########################################################################
+
+
+# 2D PLOT
+
+# Set .eps as file type
+set terminal postscript enhanced color
+
+# Settings
+reset
+set fit quiet
+set size square
+set xtics out
+set ytics out
+# set size 3.0/3.0, 5.0/4.0
+set xr[*:*]
+set yr[*:*]
+set style line 12 lc rgb '#808080' lt 0 lw 1
+#set grid ls 12
+set style line 11 lc rgb '#808080' lt 1
+set border
+set key box
+#set key tmargin
+set key font ",12
+set key samplen 4  spacing 1.25
+
+# L1 error
+set key right top
+set xlabel '{/:Bold t} (s)' font ",18"
+set ylabel 'L^{1} ({/Symbol \321} {/Symbol .} {/:Bold B})' font ",18"
+set output "Plots/KHL1err.eps"
+p "Data/KelvinHelmNoD/L1diverror.dat" u 1:2 title 'No correction' w lp pt 4 dt 2 ps 0.75 lc rgb "#9400D3" lw 1.5 , \
+"Data/KelvinHelm/L1diverror.dat" u 1:2 title 'Mixed GLM' w lp pt 12 ps 0.75 lc rgb "green" lw 1.5
+
+set palette rgb 21,22,23;
+set pm3d
+set view map
+unset surface
+set size ratio -1
+
+# No div cleaning
+set xlabel '{/:Bold x-space}' font ",18"
+set ylabel '{/:Bold y-space}' font ",18"
+set title 'Magnetic ratio at t = 5.0s'
+set output "Plots/KHt5nod.eps"
+sp "Data/KelvinHelmNoD/KelvinHelmT4.999269.dat" u 1:2:13 notitle
+
+set xlabel '{/:Bold x-space}' font ",18"
+set ylabel '{/:Bold y-space}' font ",18"
+set title 'Magnetic ratio at t = 8.0s'
+set output "Plots/KHt8nod.eps"
+sp "Data/KelvinHelmNoD/KelvinHelmT7.998426.dat" u 1:2:13 notitle
+
+set xlabel '{/:Bold x-space}' font ",18"
+set ylabel '{/:Bold y-space}' font ",18"
+set title 'Magnetic ratio at t = 12.0s'
+set output "Plots/KHt12nod.eps"
+sp "Data/KelvinHelmNoD/KelvinHelmT11.999599.dat" u 1:2:13 notitle
+
+set xlabel '{/:Bold x-space}' font ",18"
+set ylabel '{/:Bold y-space}' font ",18"
+set title 'Magnetic ratio at t = 20.0s'
+set output "Plots/KHt20nod.eps"
+sp "Data/KelvinHelmNoD/KelvinHelmT20.000000.dat" u 1:2:13 notitle
+
+# Mixed div cleaning
+set xlabel '{/:Bold x-space}' font ",18"
+set ylabel '{/:Bold y-space}' font ",18"
+set title 'Magnetic ratio at t = 5.0s'
+set output "Plots/KHt5mix.eps"
+sp "Data/KelvinHelm/KelvinHelmT4.998349.dat" u 1:2:13 notitle
+
+set xlabel '{/:Bold x-space}' font ",18"
+set ylabel '{/:Bold y-space}' font ",18"
+set title 'Magnetic ratio at t = 8.0s'
+set output "Plots/KHt8mix.eps"
+sp "Data/KelvinHelm/KelvinHelmT7.999622.dat" u 1:2:13 notitle
+
+set xlabel '{/:Bold x-space}' font ",18"
+set ylabel '{/:Bold y-space}' font ",18"
+set title 'Magnetic ratio at t = 12.0s'
+set output "Plots/KHt12mix.eps"
+sp "Data/KelvinHelm/KelvinHelmT11.999778.dat" u 1:2:13 notitle
+
+set xlabel '{/:Bold x-space}' font ",18"
+set ylabel '{/:Bold y-space}' font ",18"
+set title 'Magnetic ratio at t = 20.0s'
+set output "Plots/KHt20mix.eps"
+sp "Data/KelvinHelm/KelvinHelmT20.000000.dat" u 1:2:13 notitle

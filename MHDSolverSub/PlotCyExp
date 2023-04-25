@@ -1,0 +1,71 @@
+########################################################################
+#                                                                      #
+#                             GNUPLOT                                  #
+#                                                                      #
+########################################################################
+
+
+# 2D PLOT
+
+# Set .eps as file type
+set terminal postscript enhanced color
+
+# Settings
+reset
+set fit quiet
+# set size square
+# set size 3.0/3.0, 5.0/4.0
+set xr[1:2]
+set yr[*:*]
+set style line 12 lc rgb '#808080' lt 0 lw 1
+set grid ls 12
+set style line 11 lc rgb '#808080' lt 1
+set border
+set key box
+#set key tmargin
+set key font ",12
+set key samplen 4  spacing 1.25
+
+# Density plot
+set xlabel '{/:Bold x-space}' font ",18"
+set ylabel '{/:Bold Density}' font ",18"
+set output "Plots/CylindricalExpDensity.eps"
+p "Data/CylindricalExp.dat" u 1:3 every 101::50 title '  {/Symbol r}' w p pt 4 ps 0.75 lc rgb "#9400D3" lw 1.5
+
+# Velocity plot
+set key right top
+set xlabel '{/:Bold x-space}' font ",18"
+set ylabel '{/:Bold Velocity x}' font ",18"
+set output "Plots/CylindricalExpVelocity.eps"
+p "Data/CylindricalExp.dat" u 1:4 every 101::50 title '  v_{x}' w p pt 4 ps 0.75 lc rgb "#9400D3" lw 1.5
+
+# Pressure plot
+set key right top
+set xlabel '{/:Bold x-space}' font ",18"
+set ylabel '{/:Bold Pressure}' font ",18"
+set output "Plots/CylindricalExpPressure.eps"
+p "Data/CylindricalExp.dat" u 1:8 every 101::50 title '  p' w p pt 4 ps 0.75 lc rgb "#9400D3" lw 1.5
+
+# Specific internal energy plot
+set key right top
+set xlabel '{/:Bold x-space}' font ",18"
+set ylabel '{/:Bold Specific internal energy}' font ",18"
+set output "Plots/CylindricalExpSIE.eps"
+p "Data/CylindricalExp.dat" u 1:7 every 101::50 title '  {/Symbol e}' w p pt 4 ps 0.75 lc rgb "#9400D3" lw 1.5
+
+set xr[*:*]
+# Density surface plot
+set xlabel '{/:Bold x-space}' font ",18"
+set ylabel '{/:Bold y-space}' font ",18"
+set output "Plots/CylindricalExpDensitySurface.eps"
+sp "Data/CylindricalExp.dat" u 1:2:3 title 'Density' w l lc rgb "#9400D3" lw 1.5
+
+# Pressure surface plot
+set xlabel '{/:Bold x-space}' font ",18"
+set ylabel '{/:Bold y-space}' font ",18"
+set output "Plots/CylindricalExpPressureSurface.eps"
+sp "Data/CylindricalExp.dat" u 1:2:8 title 'Pressure' w l lc rgb "#9400D3" lw 1.5
+
+# Extras
+# fill solid border lt 3
+# :($1*0+0.005)

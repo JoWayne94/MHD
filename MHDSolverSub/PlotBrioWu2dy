@@ -1,0 +1,72 @@
+########################################################################
+#                                                                      #
+#                             GNUPLOT                                  #
+#                                                                      #
+########################################################################
+
+
+# 2D PLOT
+
+# Set .eps as file type
+set terminal postscript enhanced color
+
+# Settings
+reset
+set fit quiet
+# set size square
+# set size 3.0/3.0, 5.0/4.0
+set xr[0:800]
+set yr[*:*]
+set style line 12 lc rgb '#808080' lt 0 lw 1
+set grid ls 12
+set style line 11 lc rgb '#808080' lt 1
+set border
+set key box
+#set key tmargin
+set key font ",12
+set key samplen 4  spacing 1.25
+
+# Density plot
+set xlabel '{/:Bold y-space}' font ",18"
+set ylabel '{/:Bold Density}' font ",18"
+set output "Plots/BrioWu2dyDensity.eps"
+p "Data/BrioWu2dyN800.dat" u 2:3 every ::1::800 title '  {/Symbol r}' w p pt 4 ps 0.75 lc rgb "#9400D3" lw 1.5
+
+# Velocity x plot
+set key right top
+set xlabel '{/:Bold y-space}' font ",18"
+set ylabel '{/:Bold Velocity x}' font ",18"
+set output "Plots/BrioWu2dyVelocity_x.eps"
+p "Data/BrioWu2dyN800.dat" u 2:4 every ::1::800 title '  v_x' w p pt 4 ps 0.75 lc rgb "#9400D3" lw 1.5
+
+# Velocity y plot
+set key right top
+set xlabel '{/:Bold y-space}' font ",18"
+set ylabel '{/:Bold Velocity y}' font ",18"
+set output "Plots/BrioWu2dyVelocity_y.eps"
+p "Data/BrioWu2dyN800.dat" u 2:5 every ::1::800 title '  v_y' w p pt 4 ps 0.75 lc rgb "#9400D3" lw 1.5
+
+# Pressure plot
+set key right top
+set xlabel '{/:Bold y-space}' font ",18"
+set ylabel '{/:Bold Pressure}' font ",18"
+set output "Plots/BrioWu2dyPressure.eps"
+p "Data/BrioWu2dyN800.dat" u 2:8 every ::1::800 title '  p' w p pt 4 ps 0.75 lc rgb "#9400D3" lw 1.5
+
+# Specific internal energy plot
+set key right top
+set xlabel '{/:Bold y-space}' font ",18"
+set ylabel '{/:Bold Specific internal energy}' font ",18"
+set output "Plots/BrioWu2dySIE.eps"
+p "Data/BrioWu2dyN800.dat" u 2:7 every ::100:100 title '  {/Symbol e}' w p pt 4 ps 0.75 lc rgb "#9400D3" lw 1.5
+
+# Bx plot
+set key right top
+set xlabel '{/:Bold y-space}' font ",18"
+set ylabel '{/:Bold Magnetic field x}' font ",18"
+set output "Plots/BrioWu2dyBx.eps"
+p "Data/BrioWu2dyN800.dat" u 2:9 every ::1::800 title '  B_x' w p pt 4 ps 0.75 lc rgb "#9400D3" lw 1.5
+
+# Extras
+# fill solid border lt 3
+# :($1*0+0.005)
